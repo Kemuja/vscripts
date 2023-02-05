@@ -78,6 +78,9 @@ function OnGameEvent_player_death(params)
 	if (player == null)
 		return
 
+	if (params.death_flags & 32)
+		return
+
 	RemoveViewControl(player)
 }
 
