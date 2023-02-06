@@ -93,6 +93,21 @@ function OnGameEvent_player_initial_spawn(params)
 	player.SetForceLocalDraw(true)
 }
 
+
+function OnGameEvent_teamplay_game_over(params)
+{
+	for (local i = 1; i <= MaxClients(); i++)
+	{
+		local player = PlayerInstanceFromIndex(i)
+		if (player == null)
+			continue
+
+		player.SetForceLocalDraw(false)
+
+		RemoveViewControl(player)
+	}
+}
+
 RunScript()
 
 __CollectGameEventCallbacks(this)
